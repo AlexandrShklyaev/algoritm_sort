@@ -59,7 +59,10 @@ def select_sorted(sort_columns=["high"], limit=30, group_by_name=False, order='d
     writer.writeheader()
     for i in list_rows:
         writer.writerow(i)
+    return list(list_rows)
 
 if __name__ == '__main__':
     # пример использования
-    select_sorted(sort_columns=["high", "close"], limit=10, group_by_name=False, order='asc', filename='dump.csv')
+    rez = select_sorted(sort_columns=["high", "close"], limit=10, group_by_name=False, order='asc', filename='dump.csv')
+    for each in rez:
+        print(each)
